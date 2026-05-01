@@ -17,10 +17,12 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                echo 'Installing Python dependencies...'
+                echo 'Setting up virtual environment and installing dependencies...'
                 sh '''
-                    python3 -m pip install --upgrade pip
-                    pip3 install -r requirements.txt
+                    python3 -m venv venv
+                    . venv/bin/activate
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
                 '''
             }
         }
@@ -29,6 +31,7 @@ pipeline {
             steps {
                 echo 'Running unit tests with coverage...'
                 sh '''
+                    . venv/bin/activate
                     python3 -m pytest test_app.py \
                         --cov=app \
                         --cov-report=xml:coverage.xml \
@@ -48,10 +51,12 @@ pipeline {
                 echo 'Running SonarQube code quality scan...'
                 withSonarQubeEnv('SonarQube') {
                     sh '''
+                        . venv/bin/activate
                         sonar-scanner \
                             -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
                             -Dsonar.projectName="Demo App" \
                             -Dsonar.sources=. \
+                            -Dsonar.exclusions=venv/** \
                             -Dsonar.language=py \
                             -Dsonar.python.coverage.reportPaths=coverage.xml \
                             -Dsonar.scm.revision=${GIT_COMMIT}
