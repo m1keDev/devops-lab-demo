@@ -7,6 +7,7 @@
 # DevOps Lab API - full data collection pipeline trigger test 5
 # DevOps Lab API - full data collection pipeline trigger test 6
 # DevOps Lab API - full data collection pipeline trigger test 7
+# DevOps Lab API - full data collection pipeline trigger test 8
 from flask import Flask, jsonify
 
 app = Flask(__name__)
