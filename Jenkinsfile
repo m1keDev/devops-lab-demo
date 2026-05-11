@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        SONAR_PROJECT_KEY = 'demo-app'
+        SONAR_PROJECT_KEY = 'devops-lab-demo'
     }
 
     stages {
@@ -55,10 +55,11 @@ pipeline {
                         sonar-scanner \
                             -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
                             -Dsonar.projectName="Demo App" \
-                            -Dsonar.sources=. \
-                            -Dsonar.exclusions=venv/** \
-                            -Dsonar.language=py \
+                            -Dsonar.sources=app.py \
+                            -Dsonar.tests=test_app.py \
+                            -Dsonar.python.version=3 \
                             -Dsonar.python.coverage.reportPaths=coverage.xml \
+                            -Dsonar.exclusions=venv/**,*.xml \
                             -Dsonar.scm.revision=${GIT_COMMIT}
                     '''
                 }
