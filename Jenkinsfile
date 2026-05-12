@@ -36,11 +36,13 @@ pipeline {
                         --cov=app \
                         --cov-report=xml:coverage.xml \
                         --cov-report=term-missing \
+                        --junitxml=test-results.xml \
                         -v
                 '''
             }
             post {
                 always {
+                    junit 'test-results.xml'
                     echo 'Test stage complete.'
                 }
             }
@@ -54,12 +56,12 @@ pipeline {
                         . venv/bin/activate
                         sonar-scanner \
                             -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
-                            -Dsonar.projectName="Demo App" \
+                            -Dsonar.projectName="DevOps Lab Demo" \
                             -Dsonar.sources=app.py \
                             -Dsonar.tests=test_app.py \
                             -Dsonar.python.version=3 \
                             -Dsonar.python.coverage.reportPaths=coverage.xml \
-                            -Dsonar.exclusions=venv/**,*.xml \
+                            -Dsonar.exclusions=venv/**,test-results.xml \
                             -Dsonar.scm.revision=${GIT_COMMIT}
                     '''
                 }
