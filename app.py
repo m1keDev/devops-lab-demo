@@ -55,6 +55,10 @@ def get_user(user_id):
         return jsonify(user)
     return jsonify({"error": "User not found"}), 404
 
+def calculate_something(x, y, z):
+    unused_variable = "this does nothing"
+    result = x + y
+    return result
 
 if __name__ == "__main__":
     app.run(debug=True)
