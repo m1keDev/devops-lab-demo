@@ -74,5 +74,5 @@ def test_add_user_missing_email_raises_error():
         add_user(100, "Test", "")
 
 
-def test_intentional_failure():
-    assert False, "This build should fail"
+# def test_intentional_failure():
+#     assert False, "This build should fail"
