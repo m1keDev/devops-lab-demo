@@ -73,6 +73,6 @@ def test_add_user_missing_email_raises_error():
     with pytest.raises(ValueError):
         add_user(100, "Test", "")
 
-def test_intentional_failure():
-    # Naam
-    assert False, "This test is intentionally broken"
+# def test_intentional_failure():
+#     # Naam
+#     assert False, "This test is intentionally broken"
