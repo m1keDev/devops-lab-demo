@@ -41,6 +41,13 @@ def add_user(user_id, name, email):
     users.append(new_user)
     return new_user
 
+def process_data(data, flag, mode, option, extra):
+    # Too many parameters - SonarQube will flag this
+    x = data
+    y = flag  
+    z = mode
+    result = x
+    return result
 
 @app.route("/")
 def home():
