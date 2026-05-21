@@ -108,3 +108,13 @@ def test_divide_by_zero():
 def test_power():
     assert power(2, 3) == 8
     assert power(3, 2) == 9
+
+# For utils bugs
+def test_divide_endpoint(client):
+    response = client.get("/divide?a=10&b=2")
+    assert response.status_code == 200
+
+def test_divide_by_zero_crashes(client):
+    # This test will cause the build to fail
+    response = client.get("/divide?a=10&b=0")
+    assert response.status_code == 200  # This will fail — it returns 500
