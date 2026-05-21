@@ -50,7 +50,8 @@ users = [
 def divide():
     a = int(request.args.get("a", 10))
     b = int(request.args.get("b", 0))
-    # Bug: will crash when b=0, no error handling
+    if b == 0:
+        return jsonify({"error": "Division by zero is not allowed"}), 400
     result = divide_numbers(a, b)
     return jsonify({"result": result})
 
