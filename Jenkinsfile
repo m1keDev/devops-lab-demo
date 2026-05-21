@@ -57,7 +57,7 @@ pipeline {
                         sonar-scanner \
                             -Dsonar.projectKey=${SONAR_PROJECT_KEY} \
                             -Dsonar.projectName="DevOps Lab Demo" \
-                            -Dsonar.sources=app.py, calculator.py \
+                            -Dsonar.sources=app.py,calculator.py \
                             -Dsonar.tests=test_app.py \
                             -Dsonar.python.version=3 \
                             -Dsonar.python.coverage.reportPaths=coverage.xml \
