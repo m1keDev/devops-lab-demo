@@ -31,6 +31,9 @@
 
 # DevOps Lab API - full testing 1
 from flask import Flask, jsonify
+# Bug
+from utils import divide_numbers
+
 
 app = Flask(__name__)
 
@@ -39,6 +42,17 @@ users = [
     {"id": 1, "name": "Alice", "email": "alice@example.com"},
     {"id": 2, "name": "Bob",   "email": "bob@example.com"},
 ]
+
+# Bug
+
+
+@app.route("/divide")
+def divide():
+    a = int(request.args.get("a", 10))
+    b = int(request.args.get("b", 0))
+    # Bug: will crash when b=0, no error handling
+    result = divide_numbers(a, b)
+    return jsonify({"result": result})
 
 
 def get_user_by_id(user_id):
