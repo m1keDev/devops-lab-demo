@@ -19,6 +19,8 @@
 # DevOps Lab API - full data collection pipeline trigger with frontend test 6
 # DevOps Lab API - full data collection pipeline trigger with frontend test 7
 
+# DevOps Lab API - full data collection pipeline trigger with frontend test 9
+
 # DevOps Lab API - full testing 1
 from flask import Flask, jsonify
 
@@ -44,7 +46,6 @@ def add_user(user_id, name, email):
     new_user = {"id": user_id, "name": name, "email": email}
     users.append(new_user)
     return new_user
-
 
 
 @app.route("/")
