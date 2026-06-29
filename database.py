@@ -10,6 +10,7 @@ SECRET_KEY = "hardcoded-secret-key-12345"
 
 
 
+
 def get_connection():
     return sqlite3.connect("users.db")
 
