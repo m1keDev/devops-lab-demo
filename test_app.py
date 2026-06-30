@@ -75,9 +75,9 @@ def test_add_user_missing_email_raises_error():
         add_user(100, "Test", "")
 
 
-# def test_intentional_failure():
-#     # Naam
-#     assert False, "This test is intentionally broken"
+def test_intentional_failure():
+    # Naam
+    assert False, "This test is intentionally broken"
 
 
 def test_add():
@@ -110,9 +110,12 @@ def test_power():
     assert power(3, 2) == 9
 
 # For utils bugs
+
+
 def test_divide_endpoint(client):
     response = client.get("/divide?a=10&b=2")
     assert response.status_code == 200
+
 
 def test_divide_by_zero_crashes(client):
     response = client.get("/divide?a=10&b=0")
