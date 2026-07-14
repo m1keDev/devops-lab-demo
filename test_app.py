@@ -10,17 +10,17 @@ def client():
         yield client
 
 
-# ── Route tests ────────────────────────────────────────────
+── Route tests ────────────────────────────────────────────
 
-# def test_home_returns_200(client):
-#     response = client.get("/")
-#     assert response.status_code == 200
+def test_home_returns_200(client):
+    response = client.get("/")
+    assert response.status_code == 200
 
 
-# def test_home_returns_running_status(client):
-#     response = client.get("/")
-#     data = response.get_json()
-#     assert data["status"] == "running"
+def test_home_returns_running_status(client):
+    response = client.get("/")
+    data = response.get_json()
+    assert data["status"] == "running"
 
 
 def test_get_users_returns_list(client):
