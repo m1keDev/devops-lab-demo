@@ -10,7 +10,7 @@ def client():
         yield client
 
 
-── Route tests ────────────────────────────────────────────
+# ── Route tests ────────────────────────────────────────────
 
 def test_home_returns_200(client):
     response = client.get("/")
