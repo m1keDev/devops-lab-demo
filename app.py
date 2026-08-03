@@ -57,6 +57,7 @@ users = [
 
 
 @app.route("/divide")
+
 def divide():
     a = int(request.args.get("a", 10))
     b = int(request.args.get("b", 0))
