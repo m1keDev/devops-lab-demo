@@ -8,8 +8,9 @@ def client():
     app.config["TESTING"] = True
     with app.test_client() as client:
         yield client
+        
 
-
+@pytest.fixture(autouse=True)
 def reset_users():
     """Reset the shared users list before and after each test to prevent test pollution."""
     original = list(users)
