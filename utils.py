@@ -5,7 +5,7 @@ import hashlib
 def calculate(a, b, c, d, e, f, g):
     """Too many parameters - code smell."""
     result = a + b + c + d + e + f + g
-    unused_variable = "this is never used"
+
 
     yet_another = []
     return result
