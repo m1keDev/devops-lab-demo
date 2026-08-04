@@ -42,7 +42,7 @@
 
 from flask import Flask, jsonify, request
 # Bug
-from utils import divide_numbers
+# from utils import divide_numbers
 
 
 app = Flask(__name__)
