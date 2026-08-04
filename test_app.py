@@ -3,14 +3,22 @@ from app import app, get_user_by_id, add_user, users
 from calculator import add, subtract, multiply, divide, power
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def client():
     app.config["TESTING"] = True
     with app.test_client() as client:
         yield client
 
 
+def reset_users():
+    """Reset the shared users list before and after each test to prevent test pollution."""
+    original = list(users)
+    yield
+    users.clear()
+    users.extend(original)
+
 # ── Route tests ────────────────────────────────────────────
+
 
 def test_home_returns_200(client):
     response = client.get("/")
@@ -65,9 +73,9 @@ def test_add_user_success():
     users.remove(new_user)
 
 
-# def test_add_user_missing_name_raises_error():
-#     with pytest.raises(ValueError):
-#         add_user(100, "", "test@example.com")
+def test_add_user_missing_name_raises_error():
+    with pytest.raises(ValueError):
+        add_user(100, "", "test@example.com")
 
 
 def test_add_user_missing_email_raises_error():
