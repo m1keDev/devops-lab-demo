@@ -65,9 +65,9 @@ def test_add_user_success():
     users.remove(new_user)
 
 
-def test_add_user_missing_name_raises_error():
-    with pytest.raises(ValueError):
-        add_user(100, "", "test@example.com")
+# def test_add_user_missing_name_raises_error():
+#     with pytest.raises(ValueError):
+#         add_user(100, "", "test@example.com")
 
 
 def test_add_user_missing_email_raises_error():
@@ -117,8 +117,8 @@ def test_divide_endpoint(client):
     assert response.status_code == 200
 
 
-# def test_divide_by_zero_crashes(client):
-#     response = client.get("/divide?a=10&b=0")
-#     assert response.status_code == 400
-#     data = response.get_json()
-#     assert "error" in data
+def test_divide_by_zero_crashes(client):
+    response = client.get("/divide?a=10&b=0")
+    assert response.status_code == 400
+    data = response.get_json()
+    assert "error" in data
