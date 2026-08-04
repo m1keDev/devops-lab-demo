@@ -6,7 +6,6 @@ def calculate(a, b, c, d, e, f, g):
     """Too many parameters - code smell."""
     result = a + b + c + d + e + f + g
     unused_variable = "this is never used"
-    # another_unused = 42
     yet_another = []
     return result
 
